@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to ISL Converter</title>
+    <style>
+        body {
+            background-color: #1A3A6C; /* Dark Blue background */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6C7C8C; /* Blue-gray text */
+            font-size: 2.5em;
+        }
+
+        input[type="text"] {
+            padding: 15px;
+            width: 60%;
+            margin: 20px 0;
+            font-size: 1.5em;
+            border: 2px solid #6C7C8C; /* Blue-gray border */
+            border-radius: 5px;
+            background-color: #3A5A84; /* Blue-gray background */
+            color: white;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1.5em;
+            background-color: #6C7C8C; /* Blue-gray background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3A5A84; /* Dark blue on hover */
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .image-container img {
+            margin: 20px;
+            max-width: 500px; /* Larger images */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            color: #6C7C8C; /* Blue-gray links */
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text to Indian Sign Language Converter</h1>
+
+        <form action="/convert" method="POST">
+            <input type="text" name="text" placeholder="Enter text to convert..." required>
+            <br>
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if images %}
+        <div class="image-container">
+            {% for image in images %}
+                <img src="{{ url_for('static', filename=image) }}" alt="ISL Image">
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <br>
+        <a href="{{ url_for('index') }}">Go Back</a>
+    </div>
+</body>
+</html>
